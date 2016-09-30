@@ -2,16 +2,16 @@
 <html lang="en">
 <head><title>Timework</title></head>
 <style>
-    body {margin: 0; font-size: 16px; background: #000; padding-bottom: 7%; font-family: Arial;}
-    h1,.end {display: block; width: 100%; text-align: center; background: black; margin: 0; padding: 3% 0%; color: #ccc; font-weight: 300; font-family: monospace; font-size:1.2em;}
+    body {margin: 0; font-size: 16px; background: #000; padding-bottom: 7%; font-family: Arial; text-align: center;}
+    h1,.end {display: block; width: 100%; background: black; margin: 0; padding: 3% 0%; color: #ccc; font-weight: 300; font-family: monospace; font-size:1.2em;}
     #effective {font-size: 1.6em;}
     #effective {font-weight: bold;}
     #a2opt {display: none;}
     #a2:checked + label + #a2opt {display: block;}
     .blockdiv {display: block; position: absolute; left: 0; height: 100%;}
     #bl2:checked + #fieldbegin {background: red;}
-    fieldset {display: block; width: 100%; height: 100%; box-sizing: border-box; padding: 7% 10%; margin: 0; border: 0; color: #fff; text-align: center;}
-    span > legend{position: relative; display: block; width: 100%; text-align: center; padding:0px 0px 40px; border: none; font-size: 2.6em; font-weight: bold;
+    fieldset {display: block; width: 100%; height: 100%; box-sizing: border-box; padding: 7% 10%; margin: 0; border: 0; color: #fff;}
+    span > legend{position: relative; display: block; width: 100%; padding:0px 0px 40px; border: none; font-size: 2.6em; font-weight: bold;
     font-family: "verdana";}
     fieldset:nth-of-type(2n+1){background:rgb(194,30,95);}
     fieldset:nth-of-type(2n+2){background:rgb(194,30,130);}
@@ -24,15 +24,15 @@
     fieldset:nth-of-type(2n+9){background:rgb(30,161,194);}
     fieldset:nth-of-type(2n+10){background:rgb(29,189,152);}
     fieldset:nth-of-type(2n+11){background:rgb(30,194,138);}
-    #results {text-align: center; font-weight: bold; font-size: 6em; font-family: arial; color:#fff; line-height: 1;}
+    #results {font-weight: bold; font-size: 6em; font-family: arial; color:#fff; line-height: 1;}
     #results span {font-size: 0.5em; font-weight: normal;}
 
     label, p {font-family: arial; font-size: 1.6em; display: block; width:100%; margin-top: 20px;}
     input[type=text]{margin-top: 20px; font-size: 2.6em; text-align: center; margin-bottom: 40px; background: rgba(10,10,10,0.1); border: none; color: #fff; width: 40%;}
     input[type=radio] {display: none;}
-    input[type=radio] + label {text-align: center; color: rgba(255,255,255,0.5);}
+    input[type=radio] + label {color: rgba(255,255,255,0.5);}
     input[type=radio]:checked + label {color: #fff;}
-    input[type=submit] {display: block;width: 40%; padding:3%; border: 2px #ccc solid; color: #fff; background: #000; font-size: 2.6em; margin: 3% auto;}</style>
+    input[type=submit] {display: block;width: 40%; padding:3%; border: 2px #ccc solid; color: #fff; background: #000; font-size: 2.6em; margin: 3% auto; cursor: pointer;}</style>
 <body>
 <h1>The calculation of project completion v.0.1</h1>
     <div id="form">
