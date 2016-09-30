@@ -1,0 +1,155 @@
+<!Doctype html>
+<html lang="en">
+<head><title>Timework</title></head>
+<style>
+    body {margin: 0; font-size: 16px; background: #000; padding-bottom: 7%; font-family: Arial;}
+    h1,.end {display: block; width: 100%; text-align: center; background: black; margin: 0; padding: 3% 0%; color: #ccc; font-weight: 300; font-family: monospace; font-size:1.2em;}
+    #effective {font-size: 1.6em;}
+    #effective {font-weight: bold;}
+    #a2opt {display: none;}
+    #a2:checked + label + #a2opt {display: block;}
+    .blockdiv {display: block; position: absolute; left: 0; height: 100%;}
+    #bl2:checked + #fieldbegin {background: red;}
+    fieldset {display: block; width: 100%; height: 100%; box-sizing: border-box; padding: 7% 10%; margin: 0; border: 0; color: #fff; text-align: center;}
+    span > legend{position: relative; display: block; width: 100%; text-align: center; padding:0px 0px 40px; border: none; font-size: 2.6em; font-weight: bold;
+    font-family: "verdana";}
+    fieldset:nth-of-type(2n+1){background:rgb(194,30,95);}
+    fieldset:nth-of-type(2n+2){background:rgb(194,30,130);}
+    fieldset:nth-of-type(2n+3){background:rgb(140,14,129);}
+    fieldset:nth-of-type(2n+4){background:rgb(87,1,128);}
+    fieldset:nth-of-type(2n+5){background:rgb(62,0,128);}
+    fieldset:nth-of-type(2n+6){background:rgb(45,9,143);}
+    fieldset:nth-of-type(2n+7){background:rgb(30,57,194);}
+    fieldset:nth-of-type(2n+8){background:rgb(30,115,194);}
+    fieldset:nth-of-type(2n+9){background:rgb(30,161,194);}
+    fieldset:nth-of-type(2n+10){background:rgb(29,189,152);}
+    fieldset:nth-of-type(2n+11){background:rgb(30,194,138);}
+    #results {text-align: center; font-weight: bold; font-size: 6em; font-family: arial; color:#fff; line-height: 1;}
+    #results span {font-size: 0.5em; font-weight: normal;}
+
+    label, p {font-family: arial; font-size: 1.6em; display: block; width:100%; margin-top: 20px;}
+    input[type=text]{margin-top: 20px; font-size: 2.6em; text-align: center; margin-bottom: 40px; background: rgba(10,10,10,0.1); border: none; color: #fff; width: 40%;}
+    input[type=radio] {display: none;}
+    input[type=radio] + label {text-align: center; color: rgba(255,255,255,0.5);}
+    input[type=radio]:checked + label {color: #fff;}
+    input[type=submit] {display: block;width: 40%; padding:3%; border: 2px #ccc solid; color: #fff; background: #000; font-size: 2.6em; margin: 3% auto;}</style>
+<body>
+<h1>The calculation of project completion v.0.1</h1>
+    <div id="form">
+    <form action="calctime" id="calctime">
+    <fieldset id="fieldbegin">
+    <span><legend>Project begining</legend></span>
+    <input type="radio" name="Abegin" value="0" id="a1">
+    <label for="a1">The project is just starting</label>
+    <input type="radio" name="Abegin" value="1" id="a2">
+    <label for="a2">The project has already developed for some time</label>
+    <fieldset id="a2opt"><span><legend>Statistics of your project</legend></span>    
+    <label for="b1">How many hours have been spent?</label>
+    <input type="text" id="b1" value="0" name="twas" placeholder="hours" onchange="effective();">    
+    <label for="b2">How many hours were planned?</label>
+    <input type="text" id="b2" value="0" name="thad" placeholder="hours" onchange="effective();">
+    <label for="b3">What % of the project have already done?</label>
+    <input type="text" id="b3" value="0" name="tdone" placeholder="100%" onchange="effective();">
+    <div id="effective"></div>    
+    </fieldset></fieldset>
+    <fieldset>
+    <span><legend>Rate your current project in hours</legend></span>   
+    <label for="с1">Net estimated run time for calculated project</label>
+    <input type="text" id="с1" value="0" name="usertime" placeholder="hours">
+    </fieldset>
+    <fieldset>
+        <span><legend>Specify the deadline</legend></span> 
+    <input type="radio" name="M" id="m1" value="1"><label for="m1">Yes</label>
+    <input type="radio" name="M" id="m2" value="1.3"><label for="m2">No</label>
+    </fieldset>   
+    <fieldset>
+        <span><legend>Team. How do you work?</legend></span>
+    <input type="radio" name="Dteam" value="1" id="d1"><label for="d1">Alone</label>
+    <input type="radio" name="Dteam" value="1" id="d2"><label for="d2">Work in a team</label>
+    </fieldset>
+    <fieldset>
+        <span><legend>Making decisions. Who approves the work?</legend></span>
+    <input type="radio" name="Eapprove" value="1" id="e1"><label for="e1">1 person</label>
+    <input type="radio" name="Eapprove" value="1.15" id="e2"><label for="e2">2 persons</label>
+    <input type="radio" name="Eapprove" value="1.27" id="e3"><label for="e3">3 and more persons</label>
+    </fieldset>
+    <fieldset>
+        <span><legend>Communication with the client</legend></span>
+    <input type="radio" name="F" value="1" id="f1"><label for="f1">Directly</label>
+    <input type="radio" name="F" value="1.25" id="f2"><label for="f2">Through an intermediary / manager</label>
+    </fieldset>
+    <fieldset>
+        <span><legend>
+The novelty of the project</legend></span>
+    <input type="radio" name="H" value="1.3" id="h1"><label for="h1">I do this for the first time</label>
+    <input type="radio" name="H" value="1" id="h2"><label for="h2">I have done like this before</label>
+    </fieldset>
+    <fieldset>
+        <span><legend>Clarity of the project</legend></span>
+    <input type="radio" name="G" value="1" id="g1"><label for="g1">I understand all stages of the project</label>
+    <input type="radio" name="G" value="1.5" id="g2"><label for="g2">It is necessary to study the materials / conduct research / search for information / to come up with a solution</label>
+    </fieldset>
+    <fieldset>
+        <span><legend>Estimate you time</legend></span>
+    
+    <span>Do you tend to do everything at the last moment?</span>
+    <input type="radio" name="K" id="k3" value="1.25"><label for="k3">Yes</label>
+    <input type="radio" name="K" id="k4" value="1"><label for="k4">No</label>
+    <input type="radio" name="K" id="k5" value="1.15"><label for="k5">Sometimes</label>
+    </fieldset>
+    <fieldset>
+    <span><legend>Do you want to include weekends?</legend></span>
+    <input type="radio" name="L" id="l1" value="1.1429"><label for="l1">Yes, 1 for week</label>
+    <input type="radio" name="L" id="l2" value="1.2857"><label for="l2">Yes, 2 for week</label>
+    <input type="radio" name="L" id="l3" value="1"><label for="l3">No</label>
+    </fieldset>
+    <fieldset>
+        <span><legend>The length of the working day</legend></span>
+  <p>It is believed that people devote at best <strong>4-6 hours</strong> of effective work per day.</p>
+   <p>How many hours you will honestly work per day without distractions?</p>
+    <input type="text" name="N" id="n1" value="6">
+    </fieldset>        
+    <input type="submit" id="submit" value="UPDATE">
+    </form></div>
+    <div id="results"></div>
+    <div class="end">Developed for 10k Apart</div>
+    <script src="serialize-0.2.min.js"></script>
+    <script>
+        var effect;
+        var data = {'Abegin':0,'Dteam':1, 'Eapprove':1,'F':1,'G':1, 'H':1,'K':1,'L':1,'M':1, 'N':6,'tdone':1,'thad':1, 'twas':1,'usertime':1};
+        var form = document.getElementById('calctime');
+        //var formdata = serialize(document.forms[0]);
+        function calc(data){
+        effect = data.thad / data.twas / 100 * data.tdone;
+        var result = (data.usertime * data.Dteam * data.Eapprove * data.F * data.G * data.H * data.K * data.M * data.L);
+        console.log(result);    
+        if(data.Abegin == 1){
+        result = result / effect;  
+        }
+        return result;
+            }
+        function prep(){
+            var formdata = serialize(document.forms[0]);
+            var res = formdata.replace(/=/g, "',value:");
+            res = res.replace(/&/g, "},{name:'");     
+            formdata1 = (new Function("return [{name:'" + res + "}]")());
+            formdata1.forEach(function(obj){
+            data[obj.name] = obj.value;
+            });               
+        }
+            function showValues() {
+            prep();
+            var res = Math.round(calc(data));
+            document.getElementById('results').innerHTML = Math.ceil(res/data.N) + '<br><span>days or</span>' + "<br><span>" + res + ' hours</span>';
+            }
+        function effective (){
+            prep();
+            effect = data.thad / data.twas * data.tdone;
+            document.getElementById('effective').innerHTML = 'Your effectiveness on a project is ' + Math.ceil(effect) + '%';
+        }
+        document.getElementById('submit').onclick = function(event){event.preventDefault(); showValues()};
+        showValues();
+    </script>
+    </body>
+    
+</html>
