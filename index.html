@@ -241,7 +241,7 @@ The novelty of the project</legend></span>
  var res = Math.round(calc(data));
  document.getElementById('results').innerHTML = Math.ceil(res / data.N) + '<br><span>days or</span>' + "<br><span>" + res + ' hours</span>';
  }
- function effective() {
+    function effective() {
  prep();
  effect = data.thad / data.twas * data.tdone;
  document.getElementById('effective').innerHTML = 'Your effectiveness on a project is ' + Math.ceil(effect) + '%';
