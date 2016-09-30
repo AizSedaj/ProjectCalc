@@ -1,6 +1,5 @@
 <!Doctype html>
 <html lang="en">
-
 <head>
   <title>Timework</title>
 </head>
@@ -53,24 +52,15 @@
  font-weight: bold;
   }
   
-fieldset:nth-of-type(2n+1) {background: rgb(194, 30, 95);}
-fieldset:nth-of-type(2n+2) {background: rgb(194, 30, 130);}
-fieldset:nth-of-type(2n+3) {background: rgb(140, 14, 129);}
-fieldset:nth-of-type(2n+4) {background: rgb(87, 1, 128);}
-fieldset:nth-of-type(2n+5) {background: rgb(62, 0, 128);} 
-fieldset:nth-of-type(2n+6) {background: rgb(45, 9, 143);}
-fieldset:nth-of-type(2n+7) {background: rgb(30, 57, 194);}
-fieldset:nth-of-type(2n+8) {background: rgb(30, 115, 194);}
-fieldset:nth-of-type(2n+9) {background: rgb(30, 161, 194);}
-fieldset:nth-of-type(2n+10) {background: rgb(29, 189, 152);}
-fieldset:nth-of-type(2n+11) {background: rgb(30, 194, 138);}
+fieldset:nth-of-type(2n+1) {background: rgb(194, 30, 95);}fieldset:nth-of-type(2n+2) {background: rgb(194, 30, 130);}fieldset:nth-of-type(2n+3) {background: rgb(140, 14, 129);}fieldset:nth-of-type(2n+4) {background: rgb(87, 1, 128);}fieldset:nth-of-type(2n+5) {background: rgb(62, 0, 128);} fieldset:nth-of-type(2n+6) {background: rgb(45, 9, 143);}fieldset:nth-of-type(2n+7) {background: rgb(30, 57, 194);}
+fieldset:nth-of-type(2n+8) {background: rgb(30, 115, 194);}fieldset:nth-of-type(2n+9) {background: rgb(30, 161, 194);}fieldset:nth-of-type(2n+10) {background: rgb(29, 189, 152);}fieldset:nth-of-type(2n+11) {background: rgb(30, 194, 138);}
 
 #results {font-size: 6em; line-height: 1;}
 #results span {font-size: 0.5em; font-weight: normal;}
 label, p {font-size: 1.6em; display: block; margin-top: 20px;}
 label {cursor: pointer;}
   
-  input[type=text] {
+input[type=text] {
  margin-top: 20px;
  font-size: 2.6em;
  text-align: center;
@@ -201,40 +191,22 @@ The novelty of the project</legend></span>
   <script src="serialize-0.2.min.js"></script>
   <script>
  var effect;
- var data = {
- 'Abegin': 0,
- 'Dteam': 1,
-  'Eapprove': 1,
- 'F': 1,
- 'G': 1,
- 'H': 1,
- 'K': 1,
- 'L': 1,
- 'M': 1,
- 'N': 6,
- 'tdone': 1,
- 'thad': 1,
- 'twas': 1,
- 'usertime': 1
- };
+ var data = {'Abegin': 0,'Dteam': 1,'Eapprove': 1,'F': 1,'G': 1,'H': 1,'K': 1,
+ 'L': 1,'M': 1,'N': 6,'tdone': 1,'thad': 1,'twas': 1,'usertime': 1};
  var form = document.getElementById('calctime');
  function calc(data) {
  effect = data.thad / data.twas / 100 * data.tdone;
  var result = (data.usertime * data.Dteam * data.Eapprove * data.F * data.G * data.H * data.K * data.M * data.L);
  console.log(result);
- if (data.Abegin == 1) {
-   result = result / effect;
- }
- return result;
- }
+ if (data.Abegin == 1) {result = result / effect;}
+ return result;}
  function prep() {
  var formdata = serialize(document.forms[0]);
  var res = formdata.replace(/=/g, "',value:");
  res = res.replace(/&/g, "},{name:'");
  formdata1 = (new Function("return [{name:'" + res + "}]")());
  formdata1.forEach(function (obj) {
-   data[obj.name] = obj.value;
- });
+   data[obj.name] = obj.value;});
  }
  function showValues() {
  prep();
@@ -248,10 +220,8 @@ The novelty of the project</legend></span>
  }
  document.getElementById('submit').onclick = function (event) {
  event.preventDefault();
- showValues()
- };
+ showValues()};
  showValues();
   </script>
 </body>
-
 </html>
